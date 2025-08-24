@@ -10,7 +10,6 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>CustomWeaponsPlus</name>
-    <url>https://example.local/</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -26,7 +25,7 @@
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
 
-        <!-- JitPack: gyakran használatos Minecraft/Vault artefaktokhoz -->
+        <!-- JitPack (Vault API elérhető itt) -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
@@ -40,7 +39,7 @@
     </repositories>
 
     <dependencies>
-        <!-- Paper API - provided, a szerveren lesz jelen -->
+        <!-- Paper API - provided (a szerveren lesz jelen) -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
@@ -48,7 +47,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Vault API: com.github.MilkBowl koordináta + provided scope -->
+        <!-- Vault API via JitPack (provided scope) -->
         <dependency>
             <groupId>com.github.MilkBowl</groupId>
             <artifactId>VaultAPI</artifactId>
@@ -56,14 +55,14 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- SnakeYAML (YAML olvasás/írás a pluginban, runtime használva) -->
+        <!-- SnakeYAML -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>2.0</version>
         </dependency>
 
-        <!-- JUnit 5 a tesztekhez -->
+        <!-- JUnit 5 (test) -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -80,7 +79,7 @@
 
     <build>
         <plugins>
-            <!-- Compiler plugin -->
+            <!-- Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -92,7 +91,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire a tesztekhez -->
+            <!-- Surefire -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
