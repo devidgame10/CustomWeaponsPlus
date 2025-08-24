@@ -1,1 +1,63 @@
-mvn -B clean package
+name: Build Plugin
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Forrás kód letöltése
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Java 17 beállítása (Paperhez kötelező)
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      # Vault API biztosítása (letöltés + telepítés két koordinátával)
+      - name: Ensure VaultAPI available (install two coords)
+        run: |
+          echo "Downloading VaultAPI jar from JitPack..."
+          mkdir -p libs
+          curl -L -f -o libs/VaultAPI-1.7.jar "https://jitpack.io/com/github/MilkBowl/VaultAPI/1.7/VaultAPI-1.7.jar" || true
+
+          if [ -f libs/VaultAPI-1.7.jar ]; then
+            echo "Installing as com.github.MilkBowl:VaultAPI:1.7"
+            mvn org.apache.maven.plugins:maven-install-plugin:3.1.0:install-file \
+              -Dfile=libs/VaultAPI-1.7.jar \
+              -DgroupId=com.github.MilkBowl \
+              -DartifactId=VaultAPI \
+              -Dversion=1.7 \
+              -Dpackaging=jar
+
+            echo "Also installing as net.milkbowl.vault:VaultAPI:1.7 (compat fallback)"
+            mvn org.apache.maven.plugins:maven-install-plugin:3.1.0:install-file \
+              -Dfile=libs/VaultAPI-1.7.jar \
+              -DgroupId=net.milkbowl.vault \
+              -DartifactId=VaultAPI \
+              -Dversion=1.7 \
+              -Dpackaging=jar
+          else
+            echo "VaultAPI jar not downloaded from JitPack; build may still fail."
+          fi
+
+      # Build futtatása Maven-nel
+      - name: Build with Maven
+        run: mvn -B clean package -DskipTests
+
+      # Artifact feltöltése (hogy le tudd tölteni a jar-t az Actions futásból)
+      - name: Upload plugin jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: CustomWeaponsPlus
+          path: target/*.jar
