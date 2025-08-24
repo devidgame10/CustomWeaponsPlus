@@ -39,7 +39,7 @@
     </repositories>
 
     <dependencies>
-        <!-- Paper API - provided (a szerveren lesz jelen) -->
+        <!-- Paper API - provided (szerveren lesz jelen) -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
