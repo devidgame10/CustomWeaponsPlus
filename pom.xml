@@ -20,10 +20,19 @@
     </properties>
 
     <repositories>
+        <!-- Paper MC Maven repository -->
         <repository>
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
+
+        <!-- JitPack: gyakran használatos Minecraft/Vault artefaktokhoz -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+
+        <!-- Central -->
         <repository>
             <id>central</id>
             <url>https://repo1.maven.org/maven2/</url>
@@ -31,6 +40,7 @@
     </repositories>
 
     <dependencies>
+        <!-- Paper API - provided, a szerveren lesz jelen -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
@@ -38,19 +48,22 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Vault API: com.github.MilkBowl koordináta + provided scope -->
         <dependency>
-            <groupId>net.milkbowl.vault</groupId>
+            <groupId>com.github.MilkBowl</groupId>
             <artifactId>VaultAPI</artifactId>
             <version>1.7</version>
             <scope>provided</scope>
         </dependency>
 
+        <!-- SnakeYAML (YAML olvasás/írás a pluginban, runtime használva) -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>2.0</version>
         </dependency>
 
+        <!-- JUnit 5 a tesztekhez -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -67,6 +80,7 @@
 
     <build>
         <plugins>
+            <!-- Compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -78,6 +92,7 @@
                 </configuration>
             </plugin>
 
+            <!-- Surefire a tesztekhez -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
