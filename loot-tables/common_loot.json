@@ -1,0 +1,13 @@
+{
+  "pools": [
+    {
+      "name": "common_weapons",
+      "rolls": 1,
+      "entries": [
+        {"item": "iron_reaver", "weight": 70},
+        {"item": "shadow_slasher", "weight": 25},
+        {"item": "storm_cleaver", "weight": 5}
+      ]
+    }
+  ]
+}

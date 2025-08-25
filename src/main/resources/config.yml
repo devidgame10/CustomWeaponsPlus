@@ -1,0 +1,8 @@
+# Alapbeállítások
+resourcepack-url: "https://example.com/resourcepack.zip"
+global-cooldown-seconds: 5
+rarity-chances:
+  common: 0.7
+  rare: 0.2
+  epic: 0.09
+  legendary: 0.01

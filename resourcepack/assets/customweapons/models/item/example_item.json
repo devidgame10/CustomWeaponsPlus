@@ -1,0 +1,13 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "customweapons:item/example_item"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ -90, 0, 0 ],
+      "translation": [ 0, 1.5, -2.75 ],
+      "scale": [ 0.55, 0.55, 0.55 ]
+    }
+  }
+}

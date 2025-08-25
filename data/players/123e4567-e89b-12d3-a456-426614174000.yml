@@ -1,0 +1,7 @@
+uuid: 123e4567-e89b-12d3-a456-426614174000
+durability:
+  iron_reaver: 240
+uses:
+  iron_reaver: 2
+cooldowns:
+  lifesteal_iron_reaver: 0

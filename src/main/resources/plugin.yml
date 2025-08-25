@@ -1,0 +1,14 @@
+name: CustomWeaponsPlus
+version: 1.0.0
+main: hu.david.customweapons.CustomWeaponsPlus
+api-version: 1.21
+author: David
+description: Egyedi fegyverek plugin (minimal test build)
+commands:
+  cw:
+    description: "CustomWeaponsPlus fő parancs (teszt)"
+    usage: /cw
+permissions:
+  cw.admin:
+    description: "Admin jog"
+    default: op
