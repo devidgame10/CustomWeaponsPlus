@@ -19,19 +19,14 @@
     </properties>
 
     <repositories>
-        <!-- Paper MC Maven repository -->
         <repository>
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-
-        <!-- JitPack (Vault API elérhető itt) -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
-
-        <!-- Central -->
         <repository>
             <id>central</id>
             <url>https://repo1.maven.org/maven2/</url>
@@ -39,7 +34,6 @@
     </repositories>
 
     <dependencies>
-        <!-- Paper API - provided (szerveren lesz jelen) -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
@@ -47,7 +41,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Vault API via JitPack (provided scope) -->
         <dependency>
             <groupId>com.github.MilkBowl</groupId>
             <artifactId>VaultAPI</artifactId>
@@ -55,14 +48,12 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- SnakeYAML -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>2.0</version>
         </dependency>
 
-        <!-- JUnit 5 (test) -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -79,7 +70,6 @@
 
     <build>
         <plugins>
-            <!-- Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -90,8 +80,6 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-
-            <!-- Surefire -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
