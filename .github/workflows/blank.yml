@@ -2,9 +2,7 @@ name: Build Plugin
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
@@ -12,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Forrás kód letöltése
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Java 17 beállítása (Paperhez kötelező)
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -24,7 +20,6 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # Vault API biztosítása (letöltés + telepítés két koordinátával)
       - name: Ensure VaultAPI available (install two coords)
         run: |
           echo "Downloading VaultAPI jar from JitPack..."
@@ -51,11 +46,9 @@ jobs:
             echo "VaultAPI jar not downloaded from JitPack; build may still fail."
           fi
 
-      # Build futtatása Maven-nel
       - name: Build with Maven
         run: mvn -B clean package -DskipTests
 
-      # Artifact feltöltése (hogy le tudd tölteni a jar-t az Actions futásból)
       - name: Upload plugin jar
         uses: actions/upload-artifact@v4
         with:
